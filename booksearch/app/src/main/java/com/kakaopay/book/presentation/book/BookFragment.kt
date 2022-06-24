@@ -51,8 +51,9 @@ class BookFragment : BaseFragment<FragmentBookBinding>(R.layout.fragment_book) {
                     }
                 }
             }
+            startTime = endTime
         }
-        startTime = endTime
+
     }
 
     private fun setupLoadState() {
