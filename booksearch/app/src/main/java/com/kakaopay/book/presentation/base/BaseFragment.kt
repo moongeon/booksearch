@@ -4,19 +4,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.LayoutRes
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 import kotlinx.coroutines.Job
 
-abstract class BaseFragment<VM : BaseViewModel, VB : ViewBinding> : Fragment() {
+abstract class BaseFragment<B : ViewDataBinding>(
+    @LayoutRes val layoutId: Int
+) : Fragment() {
 
-    abstract val viewModel: VM
-
-    private var _binding: VB? = null
+    private var _binding: B? = null
     val binding get() = _binding!!
 
-
-    abstract fun getViewBinding(): VB
 
 
     override fun onCreateView(
@@ -24,13 +25,13 @@ abstract class BaseFragment<VM : BaseViewModel, VB : ViewBinding> : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = getViewBinding()
+        _binding = DataBindingUtil.inflate(inflater, layoutId, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        binding.lifecycleOwner = this
         initState()
     }
 

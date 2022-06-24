@@ -50,19 +50,6 @@ class AppModule {
     }
 
 
-    private fun getHttpClient() = OkHttpClient.Builder()
-        .readTimeout(10, TimeUnit.SECONDS)
-        .connectTimeout(10, TimeUnit.SECONDS)
-        .writeTimeout(15, TimeUnit.SECONDS)
-        .addInterceptor {
-            val request = it.request()
-                .newBuilder()
-                // TODO. 발급받은 API Key를 입력하세요.
-                .addHeader("Authorization", "KakaoAK {API_KEY}")
-                .build()
-            it.proceed(request)
-        }.build()
-
 
     @Singleton
     @Provides

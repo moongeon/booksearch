@@ -1,23 +1,25 @@
 package com.kakaopay.book.presentation.base
 
 import android.os.Bundle
+import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import androidx.viewbinding.ViewBinding
 import kotlinx.coroutines.Job
 
 
-abstract class BaseActivity<VM : BaseViewModel, VB : ViewBinding> : AppCompatActivity() {
+abstract class BaseActivity<B : ViewDataBinding>(
+    @LayoutRes val layoutId: Int
+) : AppCompatActivity() {
 
-    abstract val viewModel: VM
-
-    lateinit var binding: VB
-
-    abstract fun getViewBinding(): VB
+    lateinit var binding: B
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = getViewBinding()
+        binding = DataBindingUtil.setContentView(this, layoutId)
+        binding.lifecycleOwner = this
         setContentView(binding.root)
         initState()
     }

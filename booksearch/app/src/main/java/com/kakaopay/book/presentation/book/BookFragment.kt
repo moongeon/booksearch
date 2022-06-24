@@ -6,6 +6,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
+import com.kakaopay.book.R
 import com.kakaopay.book.databinding.FragmentBookBinding
 import com.kakaopay.book.presentation.base.BaseFragment
 import com.kakaopay.book.util.Constants
@@ -15,11 +16,9 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class BookFragment : BaseFragment<BookViewModel, FragmentBookBinding>() {
+class BookFragment : BaseFragment<FragmentBookBinding>(R.layout.fragment_book) {
 
-    override val viewModel by viewModels<BookViewModel>()
-
-    override fun getViewBinding() = FragmentBookBinding.inflate(layoutInflater)
+    private val viewModel by viewModels<BookViewModel>()
 
     private val bookSearchAdapter by lazy { BookAdapter() }
 
@@ -28,6 +27,7 @@ class BookFragment : BaseFragment<BookViewModel, FragmentBookBinding>() {
         searchBooks()
         setupLoadState()
         with(binding) {
+            binding.vm = viewModel
             rvSearchResult.adapter = bookSearchAdapter
             btnRetry.setOnClickListener {
                 binding.btnRetry.visibility = View.GONE

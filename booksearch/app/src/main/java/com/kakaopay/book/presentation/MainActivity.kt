@@ -9,16 +9,11 @@ import com.kakaopay.book.presentation.base.BaseActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : BaseActivity<MainViewModel,ActivityMainBinding>() {
-
-    override val viewModel by viewModels<MainViewModel>()
-
-    override fun getViewBinding() = ActivityMainBinding.inflate(layoutInflater)
+class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     private lateinit var navController: NavController
 
-    override fun initState() {
-        super.initState()
+    override fun initViews() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host) as NavHostFragment
         navController = navHostFragment.navController
     }
