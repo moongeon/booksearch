@@ -12,7 +12,7 @@ abstract class BaseFragment<VM : BaseViewModel, VB : ViewBinding> : Fragment() {
 
     abstract val viewModel: VM
 
-    protected var _binding: VB? = null
+    private var _binding: VB? = null
     val binding get() = _binding!!
 
 
@@ -30,6 +30,7 @@ abstract class BaseFragment<VM : BaseViewModel, VB : ViewBinding> : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         initState()
     }
 
@@ -43,8 +44,8 @@ abstract class BaseFragment<VM : BaseViewModel, VB : ViewBinding> : Fragment() {
     abstract fun observeData()
 
     override fun onDestroyView() {
-        _binding = null
         super.onDestroyView()
+        _binding = null
     }
 
 }

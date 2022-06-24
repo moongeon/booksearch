@@ -1,5 +1,6 @@
 package com.kakaopay.book.presentation.book
 
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn

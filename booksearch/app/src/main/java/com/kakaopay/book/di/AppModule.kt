@@ -2,6 +2,7 @@ package com.kakaopay.book.di
 
 import com.kakaopay.book.data.api.BookSearchApi
 import com.kakaopay.book.util.Constants
+import com.kakaopay.book.util.Constants.API_KEY
 import com.kakaopay.book.util.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides
@@ -20,11 +21,21 @@ import javax.inject.Singleton
 class AppModule {
 
     // Retrofit
+    // Retrofit
     @Singleton
     @Provides
     fun provideOkHttpClient() : OkHttpClient{
         return OkHttpClient.Builder()
-            .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+            .readTimeout(10, TimeUnit.SECONDS)
+            .connectTimeout(10, TimeUnit.SECONDS)
+            .writeTimeout(15, TimeUnit.SECONDS)
+            .addInterceptor {
+                val request = it.request()
+                    .newBuilder()
+                    .addHeader("Authorization", "KakaoAK $API_KEY")
+                    .build()
+                it.proceed(request)
+            }
             .build()
     }
 

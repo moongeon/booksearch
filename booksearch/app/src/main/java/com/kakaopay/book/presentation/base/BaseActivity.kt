@@ -7,9 +7,10 @@ import kotlinx.coroutines.Job
 
 
 abstract class BaseActivity<VM : BaseViewModel, VB : ViewBinding> : AppCompatActivity() {
+
     abstract val viewModel: VM
 
-    protected lateinit var binding: VB
+    lateinit var binding: VB
 
     abstract fun getViewBinding(): VB
 
@@ -31,7 +32,7 @@ abstract class BaseActivity<VM : BaseViewModel, VB : ViewBinding> : AppCompatAct
     abstract fun observeData()
 
     override fun onDestroy() {
-
+        super.onDestroy()
     }
 
 }
