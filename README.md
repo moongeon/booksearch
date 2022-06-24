@@ -17,7 +17,7 @@ BookSearch은 도서관 검색 앱입니다.
   * UI : 앱에서 UI구성요소
     * Layout : 다양한 위젯을 배치합니다.
     * Fragment : 구성 가능한 UI 기본 단위입니다.
-![Android Jetpack](screenshots/jetpack_donut.png "Android Jetpack Components")
+
 * Coroutine : 비동기 작업들의 코드를 간소화하고 메모리 릭을 줄이기 위해 사용합니다.
 * Retrofit & Okhttp : 네트워크 통신을 위해 사용하였습니다.
 * Dagger hilt : 의존성 주입을 위해 쉽고 불필요한 dagger 코드를 줄여주는 hilt를 사용하였습니다.
