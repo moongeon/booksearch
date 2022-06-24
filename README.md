@@ -29,10 +29,9 @@ BookSearch은 도서관 검색 앱입니다.
 
 👍스크린샷
 -----------
-![화면1](screenshots/snapShot_01.png "화면1")
-![화면2](screenshots/snapShot_02.png "화면2")
-![화면3](screenshots/snapShot_03.png "화면3")
-![화면4](screenshots/snapShot_04.png "화면4")
-![화면5](screenshots/snapShot_05.png "화면5")
-![화면6](screenshots/snapShot_06.png "화면6")
-![화면7](screenshots/snapShot_07.png "화면7")
+![화면1](screenshots/Screenshot_1.jpg "화면1")
+![화면2](screenshots/Screenshot_2.jpg "화면2")
+![화면3](screenshots/Screenshot_3.jpg "화면3")
+![화면4](screenshots/Screenshot_4.jpg "화면4")
+![화면5](screenshots/Screenshot_5.jpg "화면5")
+![화면6](screenshots/Screenshot_6.jpg "화면6")
