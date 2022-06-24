@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">PayTest</string>
+    <string name="search">도서 제목을 입력하세요</string>
+    <string name="no_network">연결상태가 좋지 않습니다. \n 조금 뒤 다시 시도해 주세요.</string>
+</resources>
