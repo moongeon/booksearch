@@ -18,9 +18,9 @@ class BookSearchPagingSource(
             val pageNumber = params.key ?: STARTING_PAGE_INDEX
 
             val response = api.getBooks(query, pageNumber, 50)
-            val endOfPaginationReached = response.body()?.meta?.isEnd!!
+            val endOfPaginationReached = response.body()?.meta?.isEnd?:false
 
-            val data = response.body()?.documents!!
+            val data = response.body()?.documents?: listOf()
             val prevKey = if (pageNumber == STARTING_PAGE_INDEX) null else pageNumber - 1
             val nextKey = if (endOfPaginationReached) { // 끝인지 확인
                 null

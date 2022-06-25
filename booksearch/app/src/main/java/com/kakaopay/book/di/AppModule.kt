@@ -35,9 +35,10 @@ class AppModule {
                     .addHeader("Authorization", "KakaoAK $API_KEY")
                     .build()
                 it.proceed(request)
-            }
+    }
             .build()
     }
+
 
     @Singleton
     @Provides

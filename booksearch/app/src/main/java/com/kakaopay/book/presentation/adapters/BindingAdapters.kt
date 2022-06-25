@@ -42,7 +42,9 @@ fun TextView.setBoldString(maintext: String,sequence: String) {
 fun getBoldText(text: String, name: String): SpannableStringBuilder {
     try {
         val str = SpannableStringBuilder(text)
-        val start = text.indexOf(name)
+        val name = name.uppercase()
+        val upText = text.uppercase()
+        val start = upText.indexOf(name)
         val end = start + name.length
         str.setSpan(ForegroundColorSpan(Color.parseColor("#FF6702")), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
         str.setSpan(StyleSpan(Typeface.BOLD), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
