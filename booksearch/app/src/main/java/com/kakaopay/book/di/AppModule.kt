@@ -2,7 +2,6 @@ package com.kakaopay.book.di
 
 import com.kakaopay.book.data.api.BookSearchApi
 import com.kakaopay.book.util.Constants
-import com.kakaopay.book.util.Constants.API_KEY
 import com.kakaopay.book.util.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides
@@ -21,24 +20,13 @@ import javax.inject.Singleton
 class AppModule {
 
     // Retrofit
-    // Retrofit
     @Singleton
     @Provides
     fun provideOkHttpClient() : OkHttpClient{
         return OkHttpClient.Builder()
-            .readTimeout(10, TimeUnit.SECONDS)
-            .connectTimeout(10, TimeUnit.SECONDS)
-            .writeTimeout(15, TimeUnit.SECONDS)
-            .addInterceptor {
-                val request = it.request()
-                    .newBuilder()
-                    .addHeader("Authorization", "KakaoAK $API_KEY")
-                    .build()
-                it.proceed(request)
-    }
+            .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
             .build()
     }
-
 
     @Singleton
     @Provides
@@ -50,6 +38,19 @@ class AppModule {
             .build()
     }
 
+
+//    private fun getHttpClient() = OkHttpClient.Builder()
+//        .readTimeout(10, TimeUnit.SECONDS)
+//        .connectTimeout(10, TimeUnit.SECONDS)
+//        .writeTimeout(15, TimeUnit.SECONDS)
+//        .addInterceptor {
+//            val request = it.request()
+//                .newBuilder()
+//                // TODO. 발급받은 API Key를 입력하세요.
+//                .addHeader("Authorization", "KakaoAK {API_KEY}")
+//                .build()
+//            it.proceed(request)
+//        }.build()
 
 
     @Singleton

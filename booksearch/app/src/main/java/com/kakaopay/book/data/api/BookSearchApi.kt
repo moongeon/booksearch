@@ -9,7 +9,7 @@ import retrofit2.http.Query
 
 interface BookSearchApi {
 
-
+    @Headers("Authorization: KakaoAK $API_KEY")
     @GET("/v3/search/book")
     suspend fun getBooks(
         @Query(value = "query") userQuery: String,

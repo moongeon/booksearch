@@ -57,11 +57,3 @@ fun getBoldText(text: String, name: String): SpannableStringBuilder {
 
 }
 
-
-//return price.let {
-//    val value = price.toLong()
-//    val format = DecimalFormat("###,###")
-//    format.format(value).plus("원")
-//} ?: kotlin.run{
-//    "0원"
-//}
