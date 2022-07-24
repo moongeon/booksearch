@@ -30,7 +30,6 @@ fun ImageView.imageUrl(imageUrl : String?) {
 fun TextView.makeComma(price: Int){
     val formatter = DecimalFormat("###,###")
     this.text = formatter.format(price).plus("원")
-
     }
 
 

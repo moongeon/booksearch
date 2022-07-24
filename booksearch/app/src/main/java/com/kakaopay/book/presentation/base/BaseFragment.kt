@@ -8,22 +8,18 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import androidx.viewbinding.ViewBinding
-import kotlinx.coroutines.Job
 
 abstract class BaseFragment<B : ViewDataBinding>(
-    @LayoutRes val layoutId: Int
+    @LayoutRes val layoutId: Int,
 ) : Fragment() {
 
     private var _binding: B? = null
     val binding get() = _binding!!
 
-
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         _binding = DataBindingUtil.inflate(inflater, layoutId, container, false)
         return binding.root

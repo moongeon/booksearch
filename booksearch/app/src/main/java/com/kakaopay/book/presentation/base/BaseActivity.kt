@@ -5,12 +5,10 @@ import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import androidx.viewbinding.ViewBinding
-import kotlinx.coroutines.Job
 
 
 abstract class BaseActivity<B : ViewDataBinding>(
-    @LayoutRes val layoutId: Int
+    @LayoutRes val layoutId: Int,
 ) : AppCompatActivity() {
 
     lateinit var binding: B
@@ -20,7 +18,6 @@ abstract class BaseActivity<B : ViewDataBinding>(
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, layoutId)
         binding.lifecycleOwner = this
-        setContentView(binding.root)
         initState()
     }
 

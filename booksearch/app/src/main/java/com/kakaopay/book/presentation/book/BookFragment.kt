@@ -4,7 +4,9 @@ import android.view.View
 import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.paging.LoadState
 import com.kakaopay.book.R
 import com.kakaopay.book.databinding.FragmentBookBinding
@@ -41,7 +43,7 @@ class BookFragment : BaseFragment<FragmentBookBinding>(R.layout.fragment_book) {
         var endTime: Long = 0
         binding.etSearch.addTextChangedListener {
             endTime = System.currentTimeMillis()
-            if (endTime - startTime >= Constants.SEARCH_BOOKS_TIME_DELAY ) {
+            if (endTime - startTime >= Constants.SEARCH_BOOKS_TIME_DELAY) {
                 it?.let {
                     val query = it.toString().trim()
                     if (query.isNotEmpty() && Query.data != query) {
@@ -83,12 +85,13 @@ class BookFragment : BaseFragment<FragmentBookBinding>(R.layout.fragment_book) {
     }
 
     override fun observeData() {
-        lifecycleScope.launch {
-            viewModel.searchPagingResult.collectLatest {
-                bookSearchAdapter.submitData(it)
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.searchPagingResult.collectLatest {
+                    bookSearchAdapter.submitData(it)
+                }
             }
         }
-
     }
 
 

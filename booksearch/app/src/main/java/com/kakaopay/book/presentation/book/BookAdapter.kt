@@ -35,7 +35,7 @@ class BookAdapter :
             binding.setClickListener { view ->
                 binding.book?.let { book ->
                     val direction = BookFragmentDirections.actionBookFragmentToDetailFragment(
-                        book,binding.checkBox.isChecked
+                        book, binding.checkBox.isChecked
                     )
                     view.findNavController().navigate(direction)
                 }
@@ -49,7 +49,7 @@ class BookAdapter :
             }
             if (Query.likeList.contains(item.title)) {
                 binding.checkBox.isChecked = true
-            }else{
+            } else {
                 binding.checkBox.isChecked = false
             }
         }
